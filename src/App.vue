@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <n-config-provider :theme="theme">
+    <n-card> <n-btn color="primary">New Window</n-btn> </n-card>
+  </n-config-provider>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// General Font
+import "vfonts/Inter.css";
+// Monospace Font
+import "vfonts/FiraCode.css";
+import { useOsTheme, darkTheme } from "naive-ui";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data: () => {
+    const osThemeRef = useOsTheme();
+    return {
+      theme: osThemeRef.value === "dark" ? darkTheme : null,
+      osTheme: osThemeRef,
+    };
+  },
+};
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: rgb(16, 16, 20);
+    color: rgba(255, 255, 255, 0.82);
+  }
 }
 </style>
