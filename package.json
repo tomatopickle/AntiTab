@@ -13,6 +13,7 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@6c65726f79/custom-titlebar": "^0.9.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "winbox": "^0.2.1"
