@@ -68,13 +68,13 @@ export default {
   background-color: rgb(27 27 28 / 85%);
   border-radius: 2px;
   backdrop-filter: blur(25px);
-  transition: background-color .2s;
 }
 .wb-title{
   display: flex;
   align-content: center;
   font-family: unset;
   font-size: 16px;
+  user-select: none;
 }
 .wb-title img{
   height: max-content;
@@ -85,5 +85,12 @@ export default {
 }
 .wb-full {
   display: none;
+}
+.winbox .webview_parent{
+  width: 100%;
+  height: 100%;
+}
+.winbox.resizing webview{
+  pointer-events: none
 }
 </style>

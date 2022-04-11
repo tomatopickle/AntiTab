@@ -8,13 +8,20 @@ export default class Window {
     this.url = url;
     this.window = new WinBox(`Opening Window`, {
         root: document.body,
-        html: `<webview src="${this.url}" style="width:100%; height:100%"></webview>`,
+        html: `<div class="webview_parent"><webview src="${this.url}" style="width:100%; height:100%"></webview></div>`,
         x: "center",
         y: "center",
         width: "75%",
         height: "75%",
         // This makes sure the window doesn't overlap the titlebar
-        top: 25,
+        top: 30,
+        onresize:function (){
+          // This is to avoid the webview from capturing the mouse events when the window is getting resized
+          this.dom.classList.add("resizing");
+          setTimeout(()=>{
+            this.dom.classList.remove("resizing");
+          },100);
+        }
       });
     const webview = this.window.dom.querySelector("webview");
     this.webviewEl = webview;
