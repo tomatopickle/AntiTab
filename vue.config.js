@@ -4,6 +4,7 @@ module.exports = {
       preload: "src/preload.js",
       builderOptions: {
         extraResources: ['src', 'src/res/'],
+        publish: ['github']
       },
     },
   },
